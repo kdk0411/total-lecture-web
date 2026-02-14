@@ -1,0 +1,60 @@
+{% extends 'user_base.html' %}
+
+{% block title %}Edit User Profile{% endblock %}
+
+{% block header %}
+<header style="background: #e2e8f0; color: #000; padding: 20px 40px; display: block; justify-content: space-between; align-items: center; border:none; position: relative; z-index: 1;">
+    <div class="header-container">
+        <div class="logo-container">
+            <!-- 사이트 로고 -->
+            <a href="/main">
+                <img src="https://github.com/user-attachments/assets/a67118d5-5517-4f98-9da7-9cdcef93960b" width="90" height="80"/>
+            </a>
+        </div>
+        <h1>마이페이지</h1>
+        <div class="icon-container" id="iconContainer">
+            {% if user.is_authenticated %}
+                <form method="post" action="{% url 'logout' %}?next={{ request.build_absolute_uri|urlencode }}">
+                    {% csrf_token %}
+                    <button type="submit" class="pretty_button"><a>Logout</a></button>
+                </form>
+            {% else %}
+                <button><a href="{% url 'login' %}">Login</a></button>
+                <button id="modal">Modal</button>
+                <div class="black-bg">
+                    <div class="white-bg">
+                        <h4>로그인하세요</h4>
+                        <form action="success.html">
+                            <div class="my-3">
+                                <input type="text" class="form-control" id="ID">
+                            </div>
+                            <div class="my-3">
+                                <input type="password" class="form-control" id="PW">
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="send">전송</button>
+                            <button type="button" class="btn btn-danger" id="close">닫기</button>
+                        </form> 
+                    </div>
+                </div>
+                <button><a href="{% url 'signup' %}">Signup</a></button>
+            {% endif %}
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-6 d-flex justify-content-start">
+        <a class="btn btn-info" href="{% url 'user_update' pk=user.pk %}">찜 삭제</a>
+    </div>
+    <div class="col-sm-6 d-flex justify-content-end">
+        <form method="post" action="{% url 'user_delete' pk=user.pk %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger delete-btn">회원탈퇴</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

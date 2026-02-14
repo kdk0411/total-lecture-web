@@ -1,0 +1,16 @@
+{% extends 'user_base.html' %}
+
+
+{% block delete %}
+<button class="btn btn-sm remove-wishlist-item" style="background: none; border: none;">
+    <img src="https://icones.pro/wp-content/uploads/2022/05/icone-fermer-et-x-rouge.png" width="24" height="24" alt="Delete">
+</button>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-6 d-flex justify-content-start">
+        <a class="btn btn-info" href="{% url 'user_detail' pk=user.pk %}">완료</a>
+    </div>
+</div>
+{% endblock %}
