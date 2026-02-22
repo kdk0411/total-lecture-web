@@ -44,4 +44,5 @@ urlpatterns = [
         ToggleAlarmView.as_view(),
         name="toggle_alarm",
     ),
+    
 ]

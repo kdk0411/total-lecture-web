@@ -22,3 +22,11 @@ urlpatterns = [
     path('', include('lecture.urls')),
     path("admin/", admin.site.urls),
 ]
+from django.shortcuts import render
+
+def index(request):
+    return render(request, 'index.html')
+
+urlpatterns += [
+    path('', index, name='home'),
+]
