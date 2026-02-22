@@ -102,6 +102,7 @@ DB_PORT=3306
       <td align="center"><a href="https://github.com/zjacom"><img src="https://avatars.githubusercontent.com/u/112957047?v=4" width="100px;" alt=""/><br /><sub><b>김승훈</b></sub></a><br /></td>
       <td align="center"><a href="https://github.com/Kim-2301"><img src="https://avatars.githubusercontent.com/u/84478606?v=4" width="100px;" alt=""/><br /><sub><b>김승현</b></sub></a><br /></td>
       <td align="center"><a href="https://github.com/7xxogre"><img src="https://avatars.githubusercontent.com/u/61622859?v=4" width="100px;" alt=""/><br /><sub><b>김유민</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/toojin2"><img src="https://avatars.githubusercontent.com/u/147586183?v=4" width="100px;" alt=""/><br /><sub><b>이진이</b></sub></a><br /></td>
     </tr>
   </tbody>
 </table>
