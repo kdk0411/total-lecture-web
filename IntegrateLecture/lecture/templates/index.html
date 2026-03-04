@@ -37,6 +37,52 @@
                 </div>
                 <img class="info-img" src="{% static 'assets/배너2.png' %}" />
               </div>
+              {% if user.is_authenticated %}
+              <div class="swiper-slide banner_item banner_item3">
+                {% for platform, lectures in recommendations.items %}
+                {% for lecture in lectures %}
+                  <div class="recommend-banner">
+                    <a href="{% url 'lecture_detail' lecture.lecture_id %}">
+                      <img
+                        class="recommend-header"
+                        src="{% static 'assets/추천배너 헤더.png' %}"
+                      />
+                      <div class="recommend-text">
+                        <div class="recommend-text-box">
+                          <div class="logo">
+                            {% if platform == 'Coursera' %}
+                            <img
+                              class="platform-logo"
+                              src="{% static 'assets/' %}{{ platform }}_logo.png"/>
+                            {% elif platform == 'Udemy' %}
+                            <img
+                              class="platform-logo"
+                              src="{% static 'assets/' %}{{ platform }}_logo.png"/>
+                            {% elif platform == 'Inflearn' %}
+                            <img
+                              class="platform-logo"
+                              src="{% static 'assets/' %}{{ platform }}_logo.png"/>
+                            {% endif %}
+                          </div>
+                          <h4 class="recommend-title">{{lecture.lecture_name}}</h4>
+                          <p class="recommend-name">강사명 : {{lecture.teacher|default:'-'}}</p>
+                          <p class="recommend-desc">{{lecture.description}}</p>
+                        </div>
+                        <div class="recommend-img-box">
+                          <img
+                            class="recommend-img"
+                            src="{{ lecture.thumbnail_url }}"
+                            alt="{{ lecture.lecture_name }}"
+                          />
+                        </div>
+                      </div>
+
+                    </a>
+                  </div>
+                {% endfor %}
+                {% endfor %}
+              </div>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -95,7 +141,7 @@
                 <input
                   class="searchInput2"
                   type="text"
-                  placeholder="요즘 많이 찾는 기술들을 학습해봐요"
+                  placeholder="요즘 많이 찾는 기술들을 학습해요"
                   id="searchInput2"
                 />
                 <button id="searchButton2" onclick="toggleSearch()">
@@ -120,9 +166,9 @@
               <!--js에서 생성되서 삽입됨-->
             </div>
             <div class="pagination">
-              <button id="prevPage">＜</button>
+              <button id="prevPage"><img src="{% static 'assets/adm_arrow-2.png' %}" alt="next"></button>
               <span id="pageNumbers"></span>
-              <button id="nextPage">＞</button>
+              <button id="nextPage"><img src="{% static 'assets/adm_arrow-3.png' %}" alt="next"></button>
             </div>
           </div>
         </div>
@@ -136,7 +182,6 @@
       {% endif %}
     </script>
     <script src="{% static 'js/all_lec.js' %}"></script>
-
     <script>
       new Swiper(".main-banner-swiper", {
         loop: true,

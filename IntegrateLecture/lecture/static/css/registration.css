@@ -1,0 +1,176 @@
+/* Signup page styling to match reference image */
+
+:root {
+  --signup-accent: #338cff;
+  --signup-bg: #f5f9fb;
+}
+
+body,
+html {
+  height: 100%;
+  background: var(--signup-bg) !important;
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
+    sans-serif;
+}
+.h-100 {
+    height: fit-content !important;
+}
+
+.container.h-100 {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.user_card {
+  width: 460px;
+  max-width: 100%;
+  margin: 0;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 36px 40px 32px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+  border: 1px solid #edf0ff;
+}
+
+#form-title {
+  width: 100%;
+  text-align: left;
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.form_container {
+  width: 100%;
+  margin-top: 20px;
+}
+.form_container form {
+    width: 100%;
+}
+/* 상단 안내 문구 */
+.signup-subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 18px;
+}
+
+/* 필드 그룹 + 레이블 */
+.form-field {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+/* Input groups: stack vertically */
+.user_card .input-group {
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+
+.user_card input.form-control,
+.user_card select {
+  width: 100%;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 0 16px;
+  font-size: 15px;
+  box-shadow: none;
+}
+
+/* Select: 이미지처럼 흰 배경 + 연한 테두리 + 오른쪽 화살표 */
+.user_card select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  color: #374151;
+  padding: 0 40px 0 16px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23374151' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 12px;
+}
+
+.user_card input.form-control:focus,
+.user_card select:focus {
+  border-color: var(--signup-accent);
+  box-shadow: 0 0 0 1px rgba(51, 140, 255, 0.2);
+  outline: none;
+}
+
+.user_card input::placeholder {
+  color: #9ca3af;
+}
+
+/* Submit button */
+.login_container {
+  padding: 0;
+  margin-top: 20px;
+}
+
+.login_btn {
+  width: 100%;
+  height: 52px;
+  border-radius: 999px;
+  background: var(--signup-accent) !important;
+  border: none;
+  color: #ffffff !important;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgb(63 123 246 / 35%);
+  transition: background 0.2s ease, transform 0.1s ease,
+    box-shadow 0.2s ease;
+}
+
+.login_btn:hover {
+  background: #296ad9 !important;
+  box-shadow: 0 10px 26px rgba(41, 73, 217, 0.4);
+  transform: translateY(-1px);
+}
+
+.login_btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 4px 12px rgba(41, 73, 217, 0.3);
+}
+
+.login_btn:focus {
+  outline: none;
+}
+
+/* Extra links */
+.links {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.links a {
+  color: var(--signup-accent);
+  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .user_card {
+    padding: 28px 20px 24px;
+    border-radius: 18px;
+  }
+
+  #form-title {
+    font-size: 22px;
+  }
+}
+

@@ -164,6 +164,10 @@ video {
   font: inherit;
   vertical-align: baseline;
   box-sizing: border-box;
+  color: #333;
+}
+select, option {
+  color: inherit;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -183,6 +187,7 @@ body {
   box-sizing: border-box;
   font-family: "Pretendard";
   letter-spacing: -1px;
+  color: #333;
 }
 ol,
 ul {
@@ -206,4 +211,29 @@ table {
 a {
   text-decoration: none;
   color: inherit;
+}
+.search-container input {
+  /* 기본 스타일 제거 */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  border: none;
+  outline: none;
+  background: none;
+  box-shadow: none;
+
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+
+main {
+  margin-top: 82px;
+}
+.inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 30px;
 }

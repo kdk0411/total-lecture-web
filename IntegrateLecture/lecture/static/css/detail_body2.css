@@ -3,11 +3,11 @@
 .tab-container {
     display: flex;
     justify-content: center;
-    position: sticky;
-    top: 0; /* tab-container를 상단에 고정 */
     background: #f3f3f3;
     z-index: 1000;
     border-bottom: 2px solid #ddd;
+    position: sticky;
+    top: 82px;
 }
 
 .tab-button {
@@ -23,15 +23,14 @@
 
 .tab-button:hover,
 .tab-button.active {
-    border-bottom: 3px solid #424769;
+    border-bottom: 3px solid var(--brandColor);
 }
 
 /******************************************************************************************************/
 /* 강의 정보 요약 섹션 */
 .lecture-summary {
     display: block;
-    position: relative;
-    left: 0;
+    padding: 60px 0;
     width: 100%;
     background: #001123;
     /* background: linear-gradient(to right, #23273e, #646883); */
@@ -39,13 +38,13 @@
     overflow: hidden;
     min-height: 340px;
 }
-
+.lecture-summary .inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+}
 .summary-info {
-    display: inline-block;
-    margin: 20px;
-    width: 65%; /* 화면의 2/3 */
-    padding: 0px 80px 20px 100px; /* 여백 추가 */
-    justify-content: center; /* 수평 중앙 정렬 */
+ width: 65%;
     
 }
 
@@ -109,9 +108,7 @@
 /******************************************************************************************************/
 /* 썸네일 섹션 */
 .lecture-thumbnail {
-    display: inline-block;
-    position: absolute;
-    width: 25%;
+    flex: 1;
     height: 100%;
 }
 .lecture-thumbnail div {
@@ -123,8 +120,9 @@
 
 .lecture-thumbnail img {
     border-radius: 20px;
-    width: 370px; 
-    height: 240px; 
+    width: 100%; 
+    height: 240px;
+    object-fit: cover; 
     box-shadow: 0px 0px 300px 50px #36445e;
 }
 
@@ -132,27 +130,29 @@
 /******************************************************************************************************/
 /* 세부정보 + 스티키 카드 컨테이너*/
 .lecture-content {
-    position: relative;
-    display: flex;
+
     right: 0;
     width: 100%;
     background: #fff;
 }
+.lecture-content .inner {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+}
 /* 강의 세부 정보 섹션 */
 .lecture-detail {
-    margin: 20px;
     width: 65%; /* 화면의 2/3 */
-    padding: 20px 80px; /* 여백 추가 */
     box-sizing: border-box;
     display: block;
-   
+    position: relative;
 }
 
 .custom-hr {
     width: 100%;
     border : 0px;
-    border-top: 4px solid #5b73ec65;
-    border-radius: 10px;
+    border-top: 2px solid #ddd;
     margin:20px 0px;
 }
 
@@ -175,17 +175,20 @@
 /******************************************************************************************************/
 /* 따라오는 카드 정보 섹션 */
 .sticky-container {
-    position: sticky; /* 표준 브라우저 */
-    width: 25%; 
+    position: sticky;
+    flex: 1;
     height: 440px;
     display: block;
-    top: 50px;
+    top: 100px;
+    margin: 0 auto;
     margin-top: -20px;
-    margin-right: 20px;
+    border: 1px solid #ddd;
+    border-radius: 13px;
+    overflow: hidden;
 }
 
 .sticky-title {
-    background: #fffbec;
+    background: #fff;
     padding: 10px;
     border-radius: 10px 10px 0px 0px;
     width: 100%; 
@@ -197,7 +200,7 @@
 
 .sticky-text {
     padding: 10px;
-    border: 1.5px solid #e7e7e7;
+
     background-color: #f3f3f3;
     width: 100%; 
     height: 190px;
@@ -247,7 +250,6 @@
     padding : 20px;
     width: 100%;
     height: 200px;
-    border: 1.5px solid #e7e7e7;
     background-color: #ffffff;
     border-radius: 0px 0px 8px 8px;
     align-items: center;
@@ -260,8 +262,8 @@
     width: 80%;
     height: 30%;
     margin: 10px;
-    background: #424769;
-    border: 1.0px solid #424769;
+    background: var(--brandColor);
+    border: 1.0px solid var(--brandColor);
     color: white;
     border-radius: 30px;
     font-weight: 600;
@@ -276,7 +278,7 @@
     height: 30%;
     margin: 10px;
     background: #ffffff;
-    border: 1.0px solid #424769;
+    border: 1.0px solid var(--brandColor);
     color: #1b1b1b;
     border-radius: 30px;
     font-weight: 600;
@@ -316,7 +318,7 @@
 }
 
 .fixed-card button {
-    background: #424769;
+    background: var(--brandColor);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -382,7 +384,7 @@
     color: white;
     font-weight: bold;
     border-radius: 20px;
-    background-color: #424769; 
+    background-color: var(--brandColor); 
 }
 
 .bar-label {
@@ -424,7 +426,7 @@
     font-size: 1.3em;
     font-weight: 500;
     width: 100%;
-    background-color: #424769 ;
+    background-color: var(--brandColor) ;
     padding: 20px 10px;
     border-radius: 8px 8px 0px 0px;
 }
@@ -457,7 +459,7 @@
 
 .price-card ul li::before {
     content: "✼";
-    color: #424769;
+    color: var(--brandColor);
     display: inline-block;
     width: 1.2em;
     margin-left: -1em;
