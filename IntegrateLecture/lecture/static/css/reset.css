@@ -237,3 +237,22 @@ main {
   margin: 0 auto;
   padding: 0 30px;
 }
+.notScrollbody {
+  overflow: hidden;
+}
+@media screen and (max-width: 992px) {
+  main {
+    margin-top: 62px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    margin-top: 57px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .inner {
+    padding: 0 15px;
+  }
+}

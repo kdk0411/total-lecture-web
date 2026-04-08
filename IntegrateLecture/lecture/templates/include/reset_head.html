@@ -1,5 +1,22 @@
 {% load static %}
 
+<!-- 파비콘 -->
+<link rel="icon" href="{% static 'assets/favicon.ico' %}" />
+<link rel="apple-touch-icon" href="{% static 'assets/favicon.png' %}" />
+
+<!-- SNS / 미리보기 썸네일 (OG 태그) -->
+<meta property="og:title" content="MoMent - 온라인 강의 통합 플랫폼" />
+<meta property="og:description" content="강의를 비교하고, 최저가로 배우세요." />
+<meta property="og:image" content="{% static 'assets/og-image.png' %}" />
+<meta property="og:type" content="website" />
+
+<!-- (선택) 트위터 카드 -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="MoMent" />
+<meta name="twitter:description" content="지금 배우는 순간, 미래가 바뀝니다." />
+<meta name="twitter:image" content="{% static 'assets/og-image.png' %}" />
+
+<!-- CSS -->
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -12,6 +29,7 @@
 <link rel="stylesheet" href="{% static 'css/all_lec_body.css' %}" />
 <link rel="stylesheet" href="{% static 'css/base_header.css' %}" />
 
+<!-- JS -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

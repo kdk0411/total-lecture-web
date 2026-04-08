@@ -91,7 +91,9 @@
   height: 100%;
   object-fit: cover;
 }
-
+.banner-container .banner_item banner_item3 .recommend-header{
+  width: 300px;
+}
 .logo_marquee {
   width: 100%;
   overflow: hidden;
@@ -103,7 +105,13 @@
   align-items: center;
   gap: 40px;
   width: max-content;
-  animation: scroll 12.5s linear infinite;
+  /* fillLogos()·이미지 로드 후 .logo-track-ready 에서만 애니메이션 시작 */
+  animation: none;
+}
+
+.logo_track.logo-track-ready {
+  will-change: transform;
+  animation: scroll 15s linear infinite;
 }
 
 .infologo {
@@ -134,7 +142,48 @@
   line-height: 10px;
   color: #666666;
 }
+.banner_left {
+  max-width: 50%;
+  padding: 30px;
+  background: #f9f9f9;
+  border-right: 1px solid #d1d1d1;
+}
+.banner_left h4 {
+  font-family: "A2z";
+  font-size: 36px;
+  font-weight: 800;
+  color: #333;
+  margin-bottom: 15px;
+}
+.banner_left h4 span {
 
+  color: var(--brandColor2);
+}
+.banner_left h4 span b {
+  color: var(--brandColor);
+}
+.banner_left p {
+  font-family: "A2z";
+  line-height: 1.3;
+  font-size: 24px;
+  font-weight: 400;
+  color: #333;
+  margin-bottom: 20px;
+}
+.banner_left button {
+  font-family: "A2z";
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+}
+.banner_left button:hover {
+  background: #0056b3;
+}
 .recommend-banner {
   width: 100%;
   height: 100%;
@@ -148,7 +197,8 @@
 }
 
 .recommend-header {
-
+  width: 100%;
+  object-fit: contain;
 }
 
 .recommend-text {
@@ -188,6 +238,7 @@
 .recommend-img-box .recommend-img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 /***************************************************************************/
 .lec-container {
@@ -510,4 +561,366 @@ p.price {
 .pagination .page-number:hover {
   background-color: #f1f1f1;
   color: #707070;
+}
+
+/* ========================================================================== */
+/* Responsive */
+@media (max-width: 1200px) {
+  .banner-container {
+    min-height: 500px;
+  }
+
+  .banner-container .banner_item1 h3 {
+    font-size: 30px;
+  }
+
+  .banner-container .banner_item1 p {
+    font-size: 18px;
+  }
+
+  .banner-container .banner_item2 .text_box {
+    left: 32%;
+    padding: 24px 42px;
+  }
+
+  .banner-container .banner_item2 h3 {
+    font-size: 28px;
+  }
+
+  .banner-container .banner_item2 p {
+    font-size: 22px;
+  }
+
+  .banner-container .banner_item2 p span {
+    font-size: 28px;
+  }
+
+  .recommend-text {
+    padding: 20px;
+  }
+
+  .recommend-text-box .recommend-title {
+    font-size: 24px;
+    margin: 10px 0 14px 0;
+  }
+
+  .recommend-text-box .recommend-name {
+    font-size: 16px;
+  }
+
+  .recommend-text-box .recommend-desc {
+    font-size: 14px;
+  }
+
+  .lecture-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .banner_section {
+    padding-top: 12px;
+  }
+
+  .banner-container {
+    min-height: 440px;
+    height: 45dvh;
+  }
+
+  .banner-container .banner_item1 h3 {
+    top: 56%;
+    font-size: 24px;
+    width: 90%;
+    text-align: center;
+  }
+
+  .banner-container .banner_item1 p {
+    top: 68%;
+    font-size: 16px;
+    padding: 8px 14px;
+  }
+
+  .banner-container .banner_item2 .text_box {
+    padding: 18px 24px;
+  }
+
+  .banner-container .banner_item2 h3 {
+    font-size: 24px;
+  }
+
+  .banner-container .banner_item2 p {
+    font-size: 18px;
+  }
+
+  .banner-container .banner_item2 p span {
+    font-size: 22px;
+  }
+
+  .recommend-header {
+    display: none;
+  }
+  .banner_left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px;
+    flex: none;
+  }
+  .banner_left h4 {
+    font-size: 23px;
+  }
+  .banner_left p {
+    font-size: 16px;
+  }
+  .recommend-text {
+    flex: 1;
+    width: 60%;
+    border-left: none;
+    border-top: 1px solid #f1f1f1;
+    gap: 12px;
+  }
+
+  .recommend-img-box {
+    height: 190px;
+  }
+
+  .filters-container {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .category-container,
+  .sort-container {
+    flex-wrap: wrap;
+  }
+
+  .filters-container select {
+    min-width: 120px;
+  }
+
+  .search-container2 {
+    max-width: 100%;
+  }
+
+  .tags-row {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .lecture-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo_track {
+    gap: 28px;
+  }
+
+  .banner-container {
+    min-height: 360px;
+    border-radius: 8px;
+  }
+
+  .banner-container .banner_item1 h3 {
+    font-size: 20px;
+  }
+
+  .banner-container .banner_item1 p {
+    font-size: 14px;
+  }
+
+  .banner-container .banner_item2 .text_box {
+    padding: 14px 16px;
+  }
+
+  .banner-container .banner_item2 h3 {
+    font-size: 20px;
+  }
+
+  .banner-container .banner_item2 p {
+    font-size: 15px;
+    line-height: 1.35;
+  }
+
+  .banner-container .banner_item2 p span {
+    font-size: 18px;
+  }
+
+  .recommend-text-box .recommend-title {
+    font-size: 20px;
+  }
+
+  .recommend-img-box {
+    height: 160px;
+  }
+
+  .lec-container {
+    padding: 30px 0;
+  }
+
+  .filters-container select {
+    height: 38px;
+    font-size: 13px;
+    min-width: 108px;
+  }
+
+  .search-container2 {
+    height: 46px;
+    margin-bottom: 20px;
+  }
+
+  .search-container2 input {
+    font-size: 14px;
+    padding-left: 14px;
+  }
+
+  .tag-box {
+    font-size: 13px;
+    padding: 8px 14px;
+  }
+
+  .lecture-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .lecture-item {
+    padding: 12px;
+  }
+
+  .info-container {
+    height: 125px;
+  }
+
+  p.lecture-name {
+    font-size: 0.95em;
+  }
+  .infologo {
+    height: 24px;
+  }
+  .infologo2 {
+    height: 16px;
+  }
+  .infologo1 {
+    height: 10px;
+  }
+  .banner_left h4 {
+    font-size: 16px;
+  }
+  .banner_left p {
+    font-size: 13px;
+  }
+  .banner_left button {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .banner-container {
+    min-height: 320px;
+    height: 52dvh;
+  }
+
+  .banner-container .banner_item1 h3 {
+    font-size: 17px;
+    top: 55%;
+  }
+
+  .banner-container .banner_item1 p {
+    font-size: 12px;
+    top: 67%;
+    padding: 6px 10px;
+  }
+
+  .banner-container .banner_item2 h3 {
+    font-size: 17px;
+  }
+
+  .banner-container .banner_item2 p {
+    font-size: 13px;
+  }
+
+  .banner-container .banner_item2 p span {
+    font-size: 15px;
+  }
+  .recommend-banner a {
+    flex-direction: column;
+  }
+  .banner_left {
+    max-width: 100%;
+    width: 100%;
+    border-left: 0;
+  }
+  .recommend-text {
+    width: 100%;
+  }
+  .recommend-header {
+    max-height: 70px;
+  }
+
+  .recommend-text {
+    padding: 14px;
+  }
+
+  .recommend-text-box .recommend-title {
+    font-size: 16px;
+    margin: 8px 0 10px 0;
+  }
+
+  .recommend-text-box .recommend-name,
+  .recommend-text-box .recommend-desc {
+    font-size: 12px;
+  }
+
+  .recommend-img-box {
+    height: 140px;
+  }
+
+  .filters-container {
+    gap: 6px;
+  }
+
+  .filters-container select {
+    width: calc(50% - 4px);
+    min-width: 0;
+  }
+
+  .search-container2 {
+    height: 42px;
+  }
+
+  .search-container2 button {
+    width: 44px;
+    font-size: 14px;
+  }
+
+  .tags-container {
+    margin: 24px 0;
+    padding: 24px 0;
+  }
+
+  .lecture-container {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .lecture-item {
+    border-radius: 8px;
+  }
+
+  .lecture-item img {
+    max-height: 180px;
+  }
+
+  .pagination {
+    margin-top: 30px;
+  }
+
+  .pagination button,
+  .pagination .page-number {
+    margin: 0 3px;
+    font-size: 0.9em;
+  }
 }

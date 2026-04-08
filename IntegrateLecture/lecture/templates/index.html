@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>메인 화면</title>
+    <title>moment - 온라인 강의 통합 플랫폼</title>
     {% include "include/reset_head.html" %}
   </head>
   <body>
@@ -21,7 +21,7 @@
         <div class="inner">
           <div class="banner-container swiper main-banner-swiper">
             <div class="swiper-wrapper">
-              <div class="swiper-slide banner_item banner_item1">
+              <!-- <div class="swiper-slide banner_item banner_item1">
                 <h3 class="title">모든 강의를 한곳에! 선택도 한번에 해결!</h3>
                 <p class="sub_title">온라인 강의를 쉽고 빠르게 확인해요</p>
                 <img class="info-img" src="{% static 'assets/배너1.png' %}" />
@@ -36,17 +36,22 @@
                   </p>
                 </div>
                 <img class="info-img" src="{% static 'assets/배너2.png' %}" />
-              </div>
+              </div> -->
               {% if user.is_authenticated %}
               <div class="swiper-slide banner_item banner_item3">
                 {% for platform, lectures in recommendations.items %}
                 {% for lecture in lectures %}
                   <div class="recommend-banner">
                     <a href="{% url 'lecture_detail' lecture.lecture_id %}">
-                      <img
+                      <div class="banner_left">
+                        <h4><span><b>Mo</b>Ment</span> 추천 강의🎓</h4>
+                        <p>지금 배우는 순간,<br> 당신의 미래가 달라집니다.</p>
+                        <button>지금 바로 시작하세요</button>
+                        <img
                         class="recommend-header"
-                        src="{% static 'assets/추천배너 헤더.png' %}"
-                      />
+                        src="{% static 'assets/배너0.png' %}"
+                        />
+                      </div>
                       <div class="recommend-text">
                         <div class="recommend-text-box">
                           <div class="logo">
@@ -192,24 +197,52 @@
       });
     </script>
     <script>
-      const track = document.querySelector(".logo_track");
+      (function () {
+        const track = document.querySelector(".logo_track");
+        if (!track) return;
 
-      function fillLogos() {
-        const trackWidth = track.scrollWidth;
-        const screenWidth = window.innerWidth;
-
-        // 화면보다 짧으면 계속 복제
-        while (track.scrollWidth < screenWidth * 2) {
-          track.innerHTML += track.innerHTML;
+        function fillLogos() {
+          const screenWidth = window.innerWidth;
+          while (track.scrollWidth < screenWidth * 2) {
+            track.innerHTML += track.innerHTML;
+          }
         }
-      }
 
-      fillLogos();
+        function enableMarqueeAnimation() {
+          track.classList.remove("logo-track-ready");
+          fillLogos();
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              track.classList.add("logo-track-ready");
+            });
+          });
+        }
 
-      window.addEventListener("resize", () => {
-        track.innerHTML = track.innerHTML.slice(0, track.innerHTML.length / 2);
-        fillLogos();
-      });
+        function waitForImagesThenStart() {
+          const imgs = track.querySelectorAll("img");
+          let pending = 0;
+          imgs.forEach(function (img) {
+            if (!img.complete) {
+              pending++;
+              img.addEventListener("load", onImg, { once: true });
+              img.addEventListener("error", onImg, { once: true });
+            }
+          });
+          function onImg() {
+            pending--;
+            if (pending === 0) enableMarqueeAnimation();
+          }
+          if (pending === 0) enableMarqueeAnimation();
+        }
+
+        waitForImagesThenStart();
+
+        window.addEventListener("resize", function () {
+          track.classList.remove("logo-track-ready");
+          track.innerHTML = track.innerHTML.slice(0, track.innerHTML.length / 2);
+          enableMarqueeAnimation();
+        });
+      })();
     </script>
   </body>
 </html>

@@ -1,54 +1,137 @@
 {% load static %}
 <header>
   <div class="inner">
-    <div class="header-container">
-      <div class="logo-container">
-        <!-- 사이트 로고 -->
-        <h1>
-          <a href="/main" class="logo">
-            <img src="{% static 'assets/logo2.png' %}" />
-          </a>
-        </h1>
+    <div class="pc_header">
+      <div class="header-container">
+        <div class="logo-container">
+          <!-- 사이트 로고 -->
+          <h1>
+            <a href="/main" class="logo">
+              <img src="{% static 'assets/logo2.png' %}" />
+            </a>
+          </h1>
+        </div>
+  
+        <div class="search-container" id="searchContainer">
+          <input
+            class="searchInput"
+            type="text"
+            placeholder="원하는 강의를 검색해보세요."
+            id="searchInput"
+          />
+          <button id="searchButton" onclick="toggleSearch()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+        <div class="icon-container" id="iconContainer">
+          {% comment %}
+          <button><i id="heart-icon" class="fa-regular fa-heart"></i></button>
+          {% endcomment %} {% if user.is_authenticated %}
+          <form
+            method="post"
+            action="{% url 'logout' %}?next={{ request.build_absolute_uri|urlencode }}"
+          >
+            {% csrf_token %}
+            <button type="submit" class="pretty_button logout">
+              <a>Logout</a>
+            </button>
+          </form>
+          <button class="pretty_button">
+            <a href="{% url 'user_detail' pk=user.pk %}">MyPage</a>
+          </button>
+          {% else %}
+          <button class="pretty_button">
+            <a
+              href="{% url 'login' %}?next={{ request.build_absolute_uri|urlencode }}"
+              >Login</a
+            >
+          </button>
+          <button class="pretty_button">
+            <a href="{% url 'signup' %}">Signup</a>
+          </button>
+          {% endif %}
+        </div>
       </div>
-      <div class="search-container" id="searchContainer">
-        <input
-          class="searchInput"
-          type="text"
-          placeholder="원하는 강의를 검색해보세요."
-          id="searchInput"
-        />
-        <button id="searchButton" onclick="toggleSearch()">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
+      <button
+        class="hamburger-btn"
+        id="hamburgerBtn"
+        type="button"
+        aria-label="메뉴 열기"
+        aria-expanded="false"
+      >
+      <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+
+    </div>
+
+  </div>
+</header>
+<div class="mobile-container">
+  <div class="inner">
+    <div class="mo-search-container" id="mo-searchContainer">
+
+        <div class="input_wrap">
+          <input
+            class="searchInput"
+            type="text"
+            placeholder="원하는 강의를 검색해보세요."
+            id="searchInput"
+          />
+          <button id="searchButton" onclick="toggleSearch()">
+            검색
+          </button>
+        </div>
+
       </div>
-      <div class="icon-container" id="iconContainer">
-        {% comment %}
-        <button><i id="heart-icon" class="fa-regular fa-heart"></i></button>
-        {% endcomment %} {% if user.is_authenticated %}
+      
+      <div class="mobile-quick-icons">
+        {% if user.is_authenticated %}
         <form
           method="post"
           action="{% url 'logout' %}?next={{ request.build_absolute_uri|urlencode }}"
         >
           {% csrf_token %}
-          <button type="submit" class="pretty_button logout">
-            <a>Logout</a>
+          <button type="submit" class="mobile-icon-btn" aria-label="로그아웃">
+            로그아웃
           </button>
         </form>
-        <button class="pretty_button">
-          <a href="{% url 'user_detail' pk=user.pk %}">MyPage</a>
-        </button>
+        <a class="mobile-icon-btn" href="{% url 'user_detail' pk=user.pk %}" aria-label="마이페이지">
+          마이페이지
+        </a>
         {% else %}
-        <button class="pretty_button">
-          <a
-            href="{% url 'login' %}?next={{ request.build_absolute_uri|urlencode }}"
-            >Login</a
-          >
-        </button>
-        <button class="pretty_button">
-          <a href="{% url 'signup' %}">Signup</a>
-        </button>
+        <a
+          class="mobile-icon-btn"
+          href="{% url 'login' %}?next={{ request.build_absolute_uri|urlencode }}"
+          aria-label="로그인"
+        >
+          로그인
+        </a>
+        <a class="mobile-icon-btn" href="{% url 'signup' %}" aria-label="회원가입">
+          회원가입
+        </a>
         {% endif %}
       </div>
-    </div>
   </div>
-</header>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const mobileContainer = document.querySelector(".mobile-container");
+    const hamburgerBtn = document.getElementById("hamburgerBtn");
+    const body = document.body;
+    if (!mobileContainer || !hamburgerBtn) return;
+
+    hamburgerBtn.addEventListener("click", function () {
+      const opened = mobileContainer.classList.toggle("menu-open");
+      hamburgerBtn.setAttribute("aria-expanded", opened ? "true" : "false");
+      body.classList.toggle("notScrollbody", opened);
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 768) {
+        mobileContainer.classList.remove("menu-open");
+        hamburgerBtn.setAttribute("aria-expanded", "false");
+        body.classList.remove("notScrollbody");
+      }
+    });
+  });
+</script>
